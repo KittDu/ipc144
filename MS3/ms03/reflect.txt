@@ -1,0 +1,108 @@
+/*
+*****************************************************************************
+                        Assignment 1 - Milestone 3
+Full Name  : Kiet Dung Truong
+Student ID#: 122088230
+Email      : kdtruong@myseneca.ca
+Section    : ZII
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+*****************************************************************************
+*/
+1. 
+In MS1: I use a for loop to validate the input of character to check if it is a valid character or not 
+char inputCharOption (const char pvalidOption[])
+{
+	char character;
+	int flag = 0;
+	int i;
+	do
+	{
+		scanf(" %c", &character);
+		for (i = 0; pvalidOption[i] != '\0'; i++)
+		{
+			if (character == pvalidOption[i])
+			{
+				flag++;
+			}
+		}
+		if (flag == 0)
+		{
+			printf("ERROR: Character must be one of [qwErty]: ");
+		}
+	} while (flag == 0);
+	clearinputbuffer();
+	return character;
+}
+
+In MS2: I used strchr in string library 
+char inputCharOption(const char inputArr[])
+ {
+     char c;
+     do
+     {
+         c = getchar();
+         if (strchr(inputArr, c))
+         {
+             clearInputBuffer();
+             return c;
+         }
+         else
+         {
+             clearInputBuffer();
+             printf("ERROR: Character must be one of [qwErty]: ");
+         }
+     } while (c != '\n');
+     return c;
+ }
+Using string library brings many benefits: 
+	a. It is readability and maintainability: The use of strchr makes the code more concise and easier to understand. It abstracts away the details of character matching, improving code readability and making it easier to maintain.
+
+	b. Reduced Chance of Bugs: Using library functions reduces the chances of introducing bugs related to manual iteration. The library functions are well-tested and widely used, reducing the likelihood of introducing errors.
+
+	c. Code Reusability: By using strchr, I leveraged a standard library function that can be used in various contexts across different projects. This promotes code reusability and consistency.
+
+	d. Efficiency: reduce lines of code and save storage (no need to create flag and i variable.
+
+2. 
+At some point in your solution, you would have had to apply a string copy library function to perform string copying. There are two variations of this function: strcpy() and strncpy()
+The significant different between is: 
+Firsly, difference in null-terminator
+Using strcpy means you copy the source With null-terminator to the destination 
+Using strncpy means you copy the source Without null-terminator
+
+Secondly, difference in syntax
+- you do not need to declare the length of the string you want to copy, it is automatically copy all the string 
+
+
+example: 
+
+strcpy() function: 
+char src[] = "Hello";
+char dest[10];
+strcpy(dest, src);
+=> Copy "Hello" from src variable to dest variable with null-terminator. So the size of dest here is 6. 
+
+strncpy() function 
+char src[] = "Hello";
+char dest[5];
+strncpy(dest, src, 5); 
+=> Copy "Hello" from src variable to dest variable without null-terminator. So the size of dest here is 5.
+
+in strcpy() function if the source string is longer than the destination buffer, it may cause a buffer overflow, leading to undefined behavior.
+
+strncpy() allows specifying the maximum number of characters to copy (n), which helps prevent buffer overflow by limiting the number of characters copied. However, if the source string is longer than the size, strncpy() may not null-terminate the destination string, potentially causing issues with string handling.
+
+In fact, strcpy() is much more preferable for copying null-terminated strings, strncpy() is useful when copying fixed-size substrings.
+3.
+To keep the list of appointments in ascending order based on the appointment's date/time I created a sort function and called it whenever a new appointment is added or when an existing appointment's date/time is updated.
+	In sort function: 
+a. I converted each component of date and time (year, month, day, hour, minute) into minutes and summing them up or comparision. then, I sorted date and time values in minutes.
+b. Next, used bubble sort technique to swap appointment to make sure it is in the correct order. 
+c. Finally, converted them back to the original date and time format so that they can display in the correct format.
+
+	Improvement possibility:
+In sort function, I have to convert date and time to minutes and back, which violates the principle of code reusability and can lead to maintenance issues if the logic needs to be update. Therefore, I may need to refactor this logic into separate functions to improve readability and maintainability.

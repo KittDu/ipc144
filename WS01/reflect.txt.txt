@@ -1,0 +1,19 @@
+
+1. Do you have any previous programming experience? If so, what language(s)? If not, what are your initial thoughts about the C language and this course?
+
+No, I do not have any previous experience with the C language. This C language is challenging and I have to work extensively to produce the desired output. Fortunately, this course proving to be very effective that I can understand the reasons behind. 
+
+
+2. Describe your understanding of the compiling process of turning a C text file into an executable program.
+
+Compiling process is a process turning high level language (C program) to executed program (binary language). This enables computer’s hardware to run. Typically, there are 6 steps to compile C program to executed program, from source file (fileName.c) => Preprocessor (fileName.i) => Compiler (fileName.s) => Assembler (fileName.o) => Linker => Executable Program. However, most of applications nowadays allow users to run and compile in a click, or manually compile files in Terminal by using “gcc -Wall fileName.c -o. 
+
+
+3. What do you hope to achieve in this course? Describe your goals and expectations.
+
+In this course, my objective is to grasp the syntax of C programming. I want to understand how, when, why to use specific functions and structures do I need to use when coding C programming. My goal now is to finish all Workshop perfectly, learning common mistakes from my classmate and at the end of the course, I aim to build and manipulate one C Programming by my own. 
+
+
+
+
+ 

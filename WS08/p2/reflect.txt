@@ -1,0 +1,30 @@
+///////////////////////////////////////////////////////////////////////////
+                               Reflection
+                             Workshop - #8
+Full Name  : Kiet Dung Truong
+Student ID#: 122088230
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+1. In this workshop, you have the “convertLbsKg” function. This function returns one value in two different ways. Explain how each return method works. If we wanted to revise this function so it doesn’t provide two ways to return a value, and instead, break this out into two separate functions, what would each function prototype look like?
+
+- return via Pointer and direct return method works: 
+-- Return via Pointer: This method allows the function to modify a variable defined outside its scope. It's useful when we want to update a variable in the calling function directly. For example, if we want to update the value of a variable kg defined in the calling function with the converted value, we can pass its address to the function
+-- Direct Return: This method is more straightforward and follows the typical function return pattern. The function calculates the result and directly returns it, without needing any extra handling or accessing memory locations outside its scope.return via pointer: double convertLbsKgByPointer(double *pnd, double *kg);
+direct return: double convertLbsKg(double pnd);
+2. Name a few functions in this workshop where they are highly cohesive and loosely coupled and explain why.
+
+getCatFoodInfo Function
+-- it is high cohesion because it handles a single task: obtaining details of a cat food product. It prompts the user for input, validates the input, and returns a struct containing the product details.
+-- it is loose Coupling because it does not depend on the specific implementation details of other functions. It relies on standard input/output operations (scanf, printf) and does not directly interact with other parts of the codebase. It only interacts with the CatFoodInfo struct, which makes it easily testable and maintainable.
+
+calculateReportData Function:
+-- it is high Cohesion: This function calculates various details for the analysis report based on the provided cat food product information. It computes values such as total servings, cost per serving, cost per calorie, etc., which are closely related to each other and form a cohesive unit.-- it is loose coupling: The function is loosely coupled because it operates on the input CatFoodInfo struct and returns a separate ReportData struct with calculated values. It does not directly interact with other parts of the codebase or rely on global variables. Its only dependency is the CatFoodInfo struct, making it modular and easily reusable.
+3. You used a header (.h) file for the first time in this workshop. The header file also had a source code file (.c) to complement it where the function definitions were placed. What are your thoughts on using this design and approach to manage the development of the application? Provide specific references to the workshop to help you communicate your remarks.
+
+-- well organization code: Header files are like a table of contents for your project. They list all the functions, structures, and important stuff your project has. Source code files are where the actual work happens. They contain the details of how each function works.
+-- reusability: Other parts of the program or external modules can include the header file to access the functionality provided by the module without needing to know its internal implementation details. For instance, in the workshop, other parts of the program include "w8p2.h" to access functions like getCatFoodInfo and calculateReportData without needing to know their implementations, thus promoting code reuse and maintainability.
+-- header files (w8p2.h file) helps developers easier to understand how to use the functions and structs defined in the module. 

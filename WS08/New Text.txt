@@ -1,0 +1,79 @@
+
+		if (cfi.productPrice <= 0)
+		{
+			printf("ERROR: Enter a positive value: ");
+		}
+		else
+		{
+			flag = 0;
+		} 
+	} while (flag);
+
+	// Weight
+	printf("WEIGHT (LBS)  : ");
+	flag = 1;
+	do {
+		scanf("%lf", &cfi.productWeight);
+		if (cfi.productWeight <= 0)
+		{
+			printf("ERROR: Enter a positive value: ");
+		}
+		else
+		{
+			flag = 0;
+		} 
+	} while (flag);
+
+	// Calories
+	printf("CALORIES/SERV.: ");
+	flag = 1;
+	do {
+		scanf("%d", &cfi.calories);
+		if (cfi.calories <= 0)
+		{
+			printf("ERROR: Enter a positive value: ");
+		}
+		else
+		{
+			flag = 0;
+		} 
+	} while (flag);
+
+	printf("\n");
+
+	// Returning the struct
+	return cfi;
+
+}
+
+// 5. Display the formatted table header
+void displayCatFoodHeader(void)
+{
+	printf("SKU         $Price    Bag-lbs Cal/Serv\n");
+	printf("------- ---------- ---------- --------\n");
+}
+
+// 6. Display a formatted record of cat food data
+void displayCatFoodData(int sku_number, double* product_price, int calorie_per_serving, double* product_weight_lbs) 
+{
+	printf("%07d %10.2lf %10.1lf %8d\n", sku_number, *product_price, *product_weight_lbs, calorie_per_serving);
+}
+
+// 7. Logic entry point
+void start(void)
+{
+	int i;
+	struct CatFoodInfo cfi[MAX_PRODUCTS] = { {0} };
+	openingMessage(MAX_PRODUCTS);
+
+	for (i = 0; i < MAX_PRODUCTS; i++) {
+		cfi[i] = getCatFoodInfo(i);
+	}
+
+	displayCatFoodHeader();
+
+	for (i = 0; i < MAX_PRODUCTS; i++) {
+		displayCatFoodData(cfi[i].skuNumber, &cfi[i].productPrice, cfi[i].calories, &cfi[i].productWeight); 
+	}
+
+}

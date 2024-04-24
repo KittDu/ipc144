@@ -1,0 +1,29 @@
+///////////////////////////////////////////////////////////////////////////
+                              Reflection
+                          Workshop - #2 (P2)
+Full Name  : Kiet Dung Truong
+Student ID#: 122088230
+Email      : kdtruong@myseneca.ca
+Section    : ZII
+
+Authenticity Declaration:
+
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+
+1. 
+a. in the 1st source code, output of a = 4;
+in the 2nd source code, output of a = 3;
+
+b.  in the 1st source code, we +1 in the value of a then giving an output of a
+in the 2nd source code, we give the output of a then +1 in the value of a, so while output here is a=3, the value of a is 4 now. 
+
+2. price1 is stored in float, which has 32bits, only 23 bits for fraction. it represents the wrong value because of rounding errors and the limited precision of floating-point numbers.
+3.
+1st: giving output "1. $0.00", because we declare money is int but printf "%.2lf", which is expected for float. Narrowing money value (from int to double to receive the right value)
+2nd: print %d => giving an output of integer value 
+3rd: this is explicit casting. it is used narrowing expression. 
+4th: arithmetic floating-point operand (double) and integral operand will give the double value, but here is printing digit value, so giving the negative value.  

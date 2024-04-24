@@ -1,0 +1,347 @@
+// core.c
+#define _CRT_SECURE_NO_WARNINGS
+
+// System Libraries
+#include <stdio.h>
+
+// User Libraries
+#include "core.h"
+// As demonstrated in the course notes:
+// https://intro2c.sdds.ca/D-Modularity/input-functions#clearing-the-buffer
+// Clear the standard input buffer
+void clearInputBuffer(void)
+{
+    // Discard all remaining char's from the standard input buffer:
+    while (getchar() != '\n')
+    {
+        ;
+        // do nothing!
+    }
+}
+// Wait for user to input the "enter" key to continue
+void suspend(void)
+{
+    printf("<ENTER> to continue...");
+    clearInputBuffer();
+    putchar('\n');
+}
+
+// intputInt Function
+int inputInt(void)
+{
+    int value;
+    char newline;
+    scanf("%d%c", &value, &newline);
+    if (newline != '\n')
+    {
+        clearInputBuffer();
+        printf("Error! Input a whole number: ");
+        return inputInt();
+    }
+    else
+    {
+        return value;
+    }
+}
+// inputIntPositive Function
+int inputIntPositive(void)
+{
+    int value;
+    char newline;
+    scanf("%d%c", &value, &newline);
+    if (value <= 0)
+    {
+        printf("ERROR! Value must be > 0: ");
+        return inputIntPositive(); // promt user input again
+    }
+    else
+        return value;
+}
+// inputIntRange Function????
+int inputIntRange(int min, int max)
+{
+    int value;
+    char newline;
+    scanf("%d%c", &value, &newline);
+    if (newline != '\n')
+    {
+        printf("Error! Input a whole number: ");
+        // return inputInt(); //=> make wrong output
+        clearInputBuffer();
+    }
+
+    // inputInt();// put this before scanf => wrong
+
+    if (value < min || value > max)
+    {
+        printf("ERROR! Value must be between -3 and 11 inclusive: ");
+        return inputIntRange(min, max);
+    }
+    else
+        return value;
+}
+// inputCharOption Function
+char inputCharOption(const char pvalidOption[6])
+{
+    int i;
+    char enteredChar;
+    int found = 0;
+
+    do
+    {
+        scanf("%c", &enteredChar);
+        for (i = 0; pvalidOption[i] != '\0'; i++)
+        {
+            if (enteredChar == pvalidOption[i])
+            {
+                return enteredChar;
+
+                found = 1;
+            }
+        }
+        if (!found)
+        {
+
+            printf("ERROR: Character must be one of [qwErty]: ");
+            // return inputCharOption(&pvalidOption); use do while loop cause of pvailidOption is an array
+        }
+        clearInputBuffer(); // remember this line
+    } while (!found);
+
+    return enteredChar;
+}
+
+// char inputCharOption(const char validOptions[])
+// {
+//     int i;
+//     char value;
+//     int found = 0;
+//     scanf("%c", &value);
+//     for (i = 0; validOptions[i] != '\0'; i++)
+//     {
+//         if (value == validOptions[i])
+//         {
+//             found = 1;
+//         }
+//         else
+//             found = 0;
+//     }
+// }
+
+// inputCString Function
+
+void inputCString(char *cstring, int min, int max)
+{
+    char character = 'x';
+    int OUT = 0;
+    do
+    {
+        int STR_len = 0;
+        int i;
+        for (i = 0; character != '\n' && STR_len <= max; i++)
+        {
+            character = getchar();
+            cstring[i] = character;
+            STR_len++;
+        }
+        if (character == '\n' && STR_len <= (max + 1))
+        {
+            STR_len--;
+            cstring[STR_len] = '\0';
+        }
+        else
+        {
+            cstring[max] = '\0';
+            clearInputBuffer();
+        }
+        if (min != max)
+        {
+            if (STR_len < min)
+            {
+                printf("ERROR: String length must be between %d and %d chars: ", min, max);
+                character = 'x';
+            }
+            else if (STR_len > max)
+            {
+                printf("ERROR: String length must be no more than 6 chars: ");
+                character = 'x';
+            }
+            else
+            {
+                OUT = 1;
+            }
+        }
+        else if (min == max)
+        {
+            if (STR_len != min)
+            {
+                printf("ERROR: String length must be exactly 6 chars: ");
+                character = 'x';
+            }
+            else
+            {
+                OUT = 1;
+            }
+        }
+    } while (OUT == 0);
+}
+// void inputCString(char *cstring, int min, int max)
+// {
+//     int counter = 0;
+//     int length = 0;
+//     // char newline = '\0';
+//     if (min == max)
+//     {
+//         length = min;
+//     }
+//     else
+//     {
+//         length = max - min;
+//     }
+
+//     do
+//     {
+//         counter = 0;
+
+//         char userInput[1000] = {'\0'};
+//         scanf("%[^\n]", userInput );
+       
+//         if (userInput[max] != '\n')
+//         {
+//              cstring[max] = '\0';
+//       clearInputBuffer();
+//         }
+
+//              int i=0;
+//         // count user input
+//         for (i = 0; userInput[i] != '\0'; i++)
+//         {
+//             counter++;
+//         }
+//         if (counter == length)
+//         {
+//             for (i = 0; i < counter; i++)
+//             {
+//                 cstring[i] = userInput[i];
+//             }
+//             cstring[i] = '\0';
+//         }
+
+//         if (min == max)
+//         {
+//             if (counter != length)
+//             {
+//                 printf("ERROR: String length must be exactly %d chars: ", length);
+//                 // clearInputBuffer();
+//             }
+//         }
+//         else if (min != max)
+//         {
+//             if (counter < min)
+//             {
+//                 printf("ERROR: String length must be between %d and %d chars: ", min, max);
+//                 // clearInputBuffer();
+//             }
+//             else if (counter > max)
+//             {
+//                 printf("ERROR: String length must be no more than 6 chars: ");
+//                 // clearInputBuffer();
+//             }
+//         }
+
+//     } while (counter != length);
+// }
+// void inputCString(char *pcstring, int min, int max)
+// {
+//     int i, count = 0;
+//     int length ;
+//     if (min == max)
+//     {
+//         length = max;
+//     }
+//     else
+//     {
+//         length = max - min;
+//     }
+//     do
+//     {
+//             char userInput[1000]={'\0'};
+//         scanf("%s", userInput);
+//         clearInputBuffer();
+//         for (i = 0; userInput[i] != '\0'; i++)
+//         {
+//             count++;
+//         }
+
+//         for (i = 0; i < count; i++)
+//         {
+//             pcstring[i] = userInput[i];
+//         }
+//         pcstring[i] = '\0';
+
+//         // else if (count < min)
+//         // {
+//         //     printf("ERROR: String length must be between %d and %d chars: ", min, max);
+//         // }
+//         // else if (min == max && count != max)
+//         // {
+//         //     printf("ERROR: String length must be exactly %d chars: ", max);
+//         // }
+//         // else if (count > max)
+
+//         // {
+//         //     printf("ERROR: String length must be no more than %d chars: ", max);
+//         // }
+
+//     } while (count != length);
+// }
+
+// displayFormattedPhone Function
+void displayFormattedPhone(const char *digits)
+{
+    // want 10 digit
+    int i;
+    int digitCount = 0;
+    int stringLength = 0;
+    // make sure string length == 10
+    if (digits != NULL)
+    {
+        for (i = 0; digits[i] != '\0'; i++)
+        {
+            stringLength++;
+        }
+    }
+    if (stringLength == 10)
+    {
+        // make sure digit from 0-9
+        for (i = 0; digits[i] != '\0'; i++)
+        {
+            if (digits[i] >= '0' && digits[i] <= '9')
+            {
+                digitCount++;
+            }
+        }
+        if (digitCount == 10)
+        {
+            printf("(");
+            for (i = 0; i < 3; i++) // the first 3 digit
+            {
+                printf("%c", digits[i]);
+            }
+            printf(")");
+            for (i = 3; i < 6; i++)
+            {
+                printf("%c", digits[i]);
+            }
+            printf("-");
+            for (i = 6; i < 10; i++)
+            {
+                printf("%c", digits[i]);
+            }
+        }
+        else
+            printf("(___)___-____");
+    }
+    else
+        printf("(___)___-____");
+}

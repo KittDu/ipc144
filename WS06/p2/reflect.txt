@@ -1,0 +1,51 @@
+///////////////////////////////////////////////////////////////////////////
+                               Reflection
+                             Workshop - #6
+Full Name  : Kiet Dung Truong
+Student ID#: 122088230
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+1.
+In part 2 of this workshop, you used three arrays of the same size to store different data types. What do we call arrays that are arranged like that? Explain why we use arrays like this (refer to your code from Part-2).
+
+It's parallel array. Because it provides a simple and efficient way to manage data when the number of elements is known and consistent across arrays.
+Refer to Part2 source code:  
+for (i = 0; i < item; i++)
+    {
+        printf("%3d  %5d    %5c    %11.2lf\n", i + 1, priority[i], financeOption[i], cost[i]);
+        sumCost += cost[i];
+    }
+2.
+ What iteration construct is the most convenient to use with Arrays? Select one example from your code where you use that iteration construct and rewrite the same logic applying one of the other two iteration constructs.Summarize your findings.For loop is the best for using with Arrays. 
+for (i = 0; i < item; i++)
+            {
+                if (financeOption[i] == 'y')
+                {
+                    financeAvailable = 1;
+                }
+            }
+
+Rewrite: 
+i=0;
+do 
+{
+     if (financeOption[i] == 'y')
+                {
+                    financeAvailable = 1;
+                }
+i++;
+} while (i<item)
+=> Both while and for loop can work with Arrays, but for loop is often preferred for its simplicity, readability and compactness. 3. 
+Describe what you did to both test and debug your program. How did you go about finding where the problems were located (explain how you did this for both syntactic and semantic problems)?
+
+To test the program, I executed the program with the test data, observing its behavior and noting any unexpected output or errors and verified the program's output matched the expected output for each test case.
+
+Regarding debugging, I read and interpreted the error messages provided by the compiler to identify Syntactic Errors and then review the code line by line, paying attention to syntax rules such as missing semicolon or put the {} in the wrong position or missing {}. 
+I analyzed the program's logic and algorithm to identify potential Semantic Errors, considering whether the program's behavior matched the intended functionality. For example, when calculate the years and month, at first, I +0.5 to round up but then I realized that I need to always round up so I added +1. 
+
+

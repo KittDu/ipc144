@@ -1,0 +1,43 @@
+///////////////////////////////////////////////////////////////////////////
+                              Reflection
+                          Workshop - #3 (P2)
+Full Name  : Kiet Dung Truong
+Student ID#: 122088230
+Email      : kdtruong@myseneca.ca
+Section    : ZII
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+1. In Part 2 of this workshop, you created several variables; how many did you create? Explain the importance oforganizing them.2. Select one calculation from your workshop that contains a Relational and a Logical expression, copy yoursubmitted code for only this part of the logic, and then identify them and explain how they worked together.3. What is DeMorgan’s Law? Give an example based on your code for this workshop where you can apply it(provide the necessary code)
+
+
+1. I created 12 variables and organized them at the beginning of the main function. 9 variables stored 3 types of coffee (3 variables for each type), while the remaining 3 variables stored customers input based on their preferences for coffee strength, cream, and number of daily servings. 
+
+There are several reasons for organizing them at the beginning: 
+a. Clarity and readability: It is easier for me to create variables and understand their relationships. It is crucial for maintenance, debugging, and collaboration. 
+
+b. Efficiency: optimizing the use of memory and computational resources and make data process more efficient in a real project.
+
+c. Maintenance and Debugging purposes: easier to locate and fix errors or bugs in the code.
+
+d. Scalability: in more complex project. It is easier to expand and modify the codebase in the well-organized structures.
+
+2. Logical and relational source code: 
+bestServedWithCream1 == 'Y' || bestServedWithCream1 == 'y'
+
+bestServedWithCream1 depends on user input (y or Y are acceptable). 
+Relational expression:
+bestServedWithCream1 == 'Y' (operand 1) and bestServedWithCream1 == 'y' (operand 2).
+ There is a logical expression (||) to combine these 2 operands and evaluate to 1 (true) if bestServedWithCream1 contains either 'Y' or 'y', and 0 (false) otherwise. 
+
+3.  
+deMorgan's law is a handy rule for converting conditions in logical expressions. 
+Example: my code in w3p2: 
+((dailyServing >= 1 && dailyServing <= 4) && weight1 == 250) || ((dailyServing >= 5 && dailyServing <= 9) && weight1 == 500) || ((dailyServing >= 10) && weight1 == 1000)
+
+change above code according deMorgan's law:
+!((((dailyServing < 1) || (dailyServing > 4)) || weight3 != 250) && (((dailyServing < 5) || (dailyServing > 9)) || weight3 != 500) && (((dailyServing <10) || weight3 != 1000)))
+

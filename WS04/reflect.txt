@@ -1,0 +1,49 @@
+///////////////////////////////////////////////////////////////////////////
+                               Reflection
+                             Workshop - #4
+Full Name  : Kiet Dung Truong
+Student ID#: 122088230
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+1. After using different types of iteration constructs in this workshop, you learn that you can use any of theiteration constructs do/while, while or for to solve a programming task. Compare and explain the application ofthe "while" and "do/while" constructs in receiving and evaluating the user's input.2. In this workshop, you used “if” optional path constructs and “if/else if” alternative path logic. Give an examplefrom the workshop were using the “if/else if” alternative path construct is more efficient than a series of “if”optional paths.3. With the completion of this workshop, you must have begun to appreciate why code formatting is important.Explain how you made your code – especially the iteration and selection logic parts – easy to read and maintain.
+
+
+1. do while allow user input at least once but while loop does not allow user input if the condition is wrong. Because do while loop while prompt user input and then evaluate the input to the condition. However, while loop while check the condition first, if it is correct, then the loop let user give input. 
+
+2. 
+        while (appleNeed > 0)
+        {
+            while (appleNeed != 0)
+            {
+                printf("Pick some APPLES... how many did you pick? : ");
+                scanf(" %d", &pickedNumber);
+		if (pickedNumber <= 0)
+                {
+                    printf("ERROR: You must pick at least 1!\n");
+                }
+                else if (pickedNumber > appleNeed)
+                {
+                    printf("You picked too many... only %d more APPLE(S) are needed.\n", appleNeed);
+                }
+                
+                else if (appleNeed == pickedNumber)
+                {
+                    appleNeed -= pickedNumber;
+                    printf("Great, that's the apples done!\n");
+                }
+                else if (pickedNumber < appleNeed)
+                {
+                    appleNeed -= pickedNumber;
+                    printf("Looks like we still need some APPLES...\n");
+                }
+            }
+        }
+In this case, using alternative path construct is much more efficient. 
+
+3. I declare all variable in the top of the source code. 
+I arranged the type of fruit in the correct order so that it is easy to find and fix. 
+I used alternative path (if  and else if) instead of optional path (if else) to make it easier to see. 
